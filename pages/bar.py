@@ -11,10 +11,8 @@ def load_data(csv):
 
 media = load_data("data/social_media.csv")
 
-fig = plt.figure(figsize=(10, 4))
-sns.countplot(x="platform", hue="gender", data=media)
-
+fig = plt.figure(figsize=(10, 6))
+bar =sns.countplot(x="platform", hue="gender", data=media, stat='count')
+for i, container in enumerate(bar.containers):
+    bar.bar_label(container, fontsize=10)
 st.pyplot(fig)
-
-sns.countplot(media, x="platform", hue="gender")
-plt.show()
